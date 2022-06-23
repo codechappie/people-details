@@ -45,12 +45,10 @@ export default function ProfilePage() {
                         {
                             !modalIsOpen ? (
                                 <>
-                                    <div className={styles.main_background}>
-                                        <img src={found.profile_background} alt="profile pic" />
-                                    </div>
-                                    <div className={styles.card_content}>
-                                        <div className={styles.main_details}>
-                                            <div className={styles.profile_pic}>
+                                    <div className={styles.main_background} style={{backgroundImage: `url(${found.profile_background})`}}>
+                                        {/* <img className={styles.bg} src={} alt="profile pic" /> */}
+                                        <div className={styles.main_content}>
+                                        <div className={styles.profile_pic}>
                                                 <img src={found.profile_image} alt="profile pic" />
                                             </div>
                                             <div className={styles.name_container}>
@@ -73,6 +71,10 @@ export default function ProfilePage() {
                                                     <div className={styles.text}>MAPA</div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.card_content}>
+                                        <div className={styles.main_details}>
                                             <hr className={styles.separation} />
                                             <div className={styles.list_details}>
                                                 <div className={styles.item}>
@@ -145,9 +147,6 @@ export default function ProfilePage() {
 
                                         </div>
                                     </div>
-                                    <div>
-                                                sdsds
-                                            </div>
                                 </>
                             ) : (
                                 <div></div>
