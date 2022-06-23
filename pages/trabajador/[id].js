@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Profile.module.css'
 import { useRouter } from 'next/router'
 import { data } from '../data/data'
 export default function ProfilePage() {
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     const { query } = useRouter();
     let id = query.id?.toLowerCase();
 
@@ -23,105 +24,135 @@ export default function ProfilePage() {
             {
                 found ? (
                     <main className={styles.main}>
-                        <div className={styles.main_background}>
-                            <img src={found.profile_background} alt="profile pic" />
-                        </div>
-                        <div className={styles.card_content}>
-                            <div className={styles.main_details}>
-                                <div className={styles.profile_pic}>
-                                    <img src={found.profile_image} alt="profile pic" />
+                        <div className={`${styles.map_modal} ${modalIsOpen ? styles.is_open : ''}`}>
+                            <div className={styles.overlay} onClick={() => setModalIsOpen(false)}></div>
+                            <div className={styles.iframe}>
+                                <div className={styles.close} onClick={() => setModalIsOpen(false)}>
+                                    <img src="/images/close.png" alt="" />
                                 </div>
-                                <div className={styles.name_container}>
-                                    <h2 className={styles.name}>{found.name}</h2>
-                                    <h2 className={styles.name}>{found.lastname}</h2>
-                                    <h5>{found.occupation}</h5>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.9665589643755!2d-77.04023568561693!3d-12.114440646460457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c83eab9881b1%3A0xacd2d692acfa92c6!2sColegio%20Inmaculado%20Coraz%C3%B3n!5e0!3m2!1ses-419!2spe!4v1655955387487!5m2!1ses-419!2spe"
+                                    width="100%" height="400" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+                                </iframe>
+
+                                <div className={styles.details}>
+                                    <h4>Ubicación</h4>
+                                    <p>{found.address_details.text}</p>
+
+                                    <a href={`https://www.google.com/maps/dir//${found.address_details.text}`} >¿Cómo llegar?</a>
                                 </div>
-
-                                <div className={styles.main_action_buttons}>
-                                    <div className={styles.main_action_button}>
-                                        <img src='/images/timbre.png' alt="profile pic" />
-                                        <div className={styles.text}>Llamar</div>
-                                    </div>
-                                    <div className={styles.main_action_button}>
-                                        <img src='/images/mail.png' alt="profile pic" />
-                                        <div className={styles.text}>Correo</div>
-                                    </div>
-                                    <div className={styles.main_action_button}>
-                                        <img src='/images/map.png' alt="profile pic" />
-                                        <div className={styles.text}>MAPA</div>
-                                    </div>
-                                </div>
-                                <hr className={styles.separation} />
-                                <div className={styles.list_details}>
-                                    <div className={styles.item}>
-                                        <div className={styles.icon}>
-                                            <img src='/images/phone-filled.png' alt="profile pic" />
-                                        </div>
-                                        <div className={styles.item_informartion}>
-                                            <span className={styles.main_text}>
-                                                {found.phone_number}
-                                            </span>
-                                            <small>Móvil</small>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.separation} ${styles.small}`} />
-
-                                    <div className={styles.item}>
-                                        <div className={styles.icon}>
-                                            <img src='/images/mail-filled.png' alt="profile pic" />
-                                        </div>
-                                        <div className={styles.item_informartion}>
-                                            <span className={styles.main_text}>
-                                                {found.email}
-                                            </span>
-                                            <small>Correo</small>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.separation} ${styles.small}`} />
-
-                                    <div className={styles.item}>
-                                        <div className={styles.icon}>
-                                            <img src='/images/job-filled.png' alt="profile pic" />
-                                        </div>
-                                        <div className={styles.item_informartion}>
-                                            <span className={styles.main_text}>
-                                                {found.occupation}
-                                            </span>
-                                            <small>Ocupación</small>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.separation} ${styles.small}`} />
-
-                                    <div className={styles.item}>
-                                        <div className={styles.icon}>
-                                            <img src='/images/map-filled.png' alt="profile pic" />
-                                        </div>
-                                        <div className={styles.item_informartion}>
-                                            <span className={styles.main_text}>
-                                                {found.address_details.text}
-                                            </span>
-                                            <button>Mostrar en el mapa</button>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.separation} ${styles.small}`} />
-
-                                    <div className={styles.item}>
-                                        <div className={styles.icon}>
-                                            <img src='/images/web-filled.png' alt="profile pic" />
-                                        </div>
-                                        <div className={styles.item_informartion}>
-                                            <span className={styles.main_text}>
-                                                {found.website}
-                                            </span>
-                                            <small>Página web</small>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.separation} ${styles.small}`} />
-                                </div>
-
                             </div>
-
                         </div>
+                        {
+                            !modalIsOpen ? (
+                                <>
+                                    <div className={styles.main_background}>
+                                        <img src={found.profile_background} alt="profile pic" />
+                                    </div>
+                                    <div className={styles.card_content}>
+                                        <div className={styles.main_details}>
+                                            <div className={styles.profile_pic}>
+                                                <img src={found.profile_image} alt="profile pic" />
+                                            </div>
+                                            <div className={styles.name_container}>
+                                                <h2 className={styles.name}>{found.name}</h2>
+                                                <h2 className={styles.name}>{found.lastname}</h2>
+                                                <h5>{found.occupation}</h5>
+                                            </div>
+
+                                            <div className={styles.main_action_buttons}>
+                                                <div className={styles.main_action_button}>
+                                                    <img src='/images/timbre.png' alt="profile pic" />
+                                                    <div className={styles.text}>Llamar</div>
+                                                </div>
+                                                <div className={styles.main_action_button}>
+                                                    <img src='/images/mail.png' alt="profile pic" />
+                                                    <div className={styles.text}>Correo</div>
+                                                </div>
+                                                <div className={styles.main_action_button} onClick={() => setModalIsOpen(true)}>
+                                                    <img src='/images/map.png' alt="profile pic" />
+                                                    <div className={styles.text}>MAPA</div>
+                                                </div>
+                                            </div>
+                                            <hr className={styles.separation} />
+                                            <div className={styles.list_details}>
+                                                <div className={styles.item}>
+                                                    <div className={styles.icon}>
+                                                        <img src='/images/phone-filled.png' alt="profile pic" />
+                                                    </div>
+                                                    <div className={styles.item_informartion}>
+                                                        <span className={styles.main_text}>
+                                                            {found.phone_number}
+                                                        </span>
+                                                        <small>Móvil</small>
+                                                    </div>
+                                                </div>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+
+                                                <div className={styles.item}>
+                                                    <div className={styles.icon}>
+                                                        <img src='/images/mail-filled.png' alt="profile pic" />
+                                                    </div>
+                                                    <div className={styles.item_informartion}>
+                                                        <span className={styles.main_text}>
+                                                            {found.email}
+                                                        </span>
+                                                        <small>Correo</small>
+                                                    </div>
+                                                </div>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+
+                                                <div className={styles.item}>
+                                                    <div className={styles.icon}>
+                                                        <img src='/images/job-filled.png' alt="profile pic" />
+                                                    </div>
+                                                    <div className={styles.item_informartion}>
+                                                        <span className={styles.main_text}>
+                                                            {found.occupation}
+                                                        </span>
+                                                        <small>Ocupación</small>
+                                                    </div>
+                                                </div>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+
+                                                <div className={styles.item}>
+                                                    <div className={styles.icon}>
+                                                        <img src='/images/map-filled.png' alt="profile pic" />
+                                                    </div>
+                                                    <div className={styles.item_informartion}>
+                                                        <span className={styles.main_text}>
+                                                            {found.address_details.text}
+                                                        </span>
+                                                        <button className={styles.map_button} onClick={() => setModalIsOpen(true)}>
+                                                            Mostrar en el mapa
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+
+                                                <div className={styles.item}>
+                                                    <div className={styles.icon}>
+                                                        <img src='/images/web-filled.png' alt="profile pic" />
+                                                    </div>
+                                                    <div className={styles.item_informartion}>
+                                                        <span className={styles.main_text}>
+                                                            {found.website}
+                                                        </span>
+                                                        <small>Página web</small>
+                                                    </div>
+                                                </div>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                                sdsds
+                                            </div>
+                                </>
+                            ) : (
+                                <div></div>
+                            )
+                        }
                     </main>
                 ) : (
                     <div>Nada</div>
