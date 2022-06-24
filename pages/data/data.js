@@ -1,4 +1,4 @@
-export const data = [
+const data = [
     {
         name: "Andrea Carola",
         lastname: "Giraldo Rosales",
@@ -15,3 +15,5 @@ export const data = [
         website: "https://arcadepapel.com",
     }
 ]
+
+export default data;

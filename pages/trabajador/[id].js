@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { useState } from 'react'
 import styles from './Profile.module.css'
 import { useRouter } from 'next/router'
-import { data } from '../data/data'
+import data from '../data/data'
 export default function ProfilePage() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const { query } = useRouter();
