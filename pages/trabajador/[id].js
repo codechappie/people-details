@@ -38,17 +38,16 @@ export default function ProfilePage() {
                                     <h4>Ubicación</h4>
                                     <p>{found.address_details.text}</p>
 
-                                    <a href={`https://www.google.com/maps/dir//${found.address_details.text}`} >¿Cómo llegar?</a>
+                                    <a href={`https://www.google.com/maps/dir//${found.address_details.text}`} target="blank">¿Cómo llegar?</a>
                                 </div>
                             </div>
                         </div>
                         {
-                            !modalIsOpen ? (
+                            !modalIsOpen && (
                                 <>
-                                    <div className={styles.main_background} style={{backgroundImage: `url(${found.profile_background})`}}>
-                                        {/* <img className={styles.bg} src={} alt="profile pic" /> */}
+                                    <div className={styles.main_background} style={{ backgroundImage: `url(${found.profile_background})` }}>
                                         <div className={styles.main_content}>
-                                        <div className={styles.profile_pic}>
+                                            <div className={styles.profile_pic}>
                                                 <img src={found.profile_image} alt="profile pic" />
                                             </div>
                                             <div className={styles.name_container}>
@@ -58,14 +57,14 @@ export default function ProfilePage() {
                                             </div>
 
                                             <div className={styles.main_action_buttons}>
-                                                <div className={styles.main_action_button}>
+                                                <a href={`tel:${found.phone_number}`} className={styles.main_action_button}>
                                                     <img src='/images/timbre.png' alt="profile pic" />
                                                     <div className={styles.text}>Llamar</div>
-                                                </div>
-                                                <div className={styles.main_action_button}>
+                                                </a>
+                                                <a href={`mailto:${found.email}`} className={styles.main_action_button}>
                                                     <img src='/images/mail.png' alt="profile pic" />
                                                     <div className={styles.text}>Correo</div>
-                                                </div>
+                                                </a>
                                                 <div className={styles.main_action_button} onClick={() => setModalIsOpen(true)}>
                                                     <img src='/images/map.png' alt="profile pic" />
                                                     <div className={styles.text}>MAPA</div>
@@ -75,9 +74,8 @@ export default function ProfilePage() {
                                     </div>
                                     <div className={styles.card_content}>
                                         <div className={styles.main_details}>
-                                            <hr className={styles.separation} />
                                             <div className={styles.list_details}>
-                                                <div className={styles.item}>
+                                                <a className={styles.item} href={`tel:${found.phone_number}`}>
                                                     <div className={styles.icon}>
                                                         <img src='/images/phone-filled.png' alt="profile pic" />
                                                     </div>
@@ -87,10 +85,10 @@ export default function ProfilePage() {
                                                         </span>
                                                         <small>Móvil</small>
                                                     </div>
-                                                </div>
+                                                </a>
                                                 <hr className={`${styles.separation} ${styles.small}`} />
 
-                                                <div className={styles.item}>
+                                                <a className={styles.item} href={`mailto:${found.email}`}>
                                                     <div className={styles.icon}>
                                                         <img src='/images/mail-filled.png' alt="profile pic" />
                                                     </div>
@@ -100,7 +98,7 @@ export default function ProfilePage() {
                                                         </span>
                                                         <small>Correo</small>
                                                     </div>
-                                                </div>
+                                                </a>
                                                 <hr className={`${styles.separation} ${styles.small}`} />
 
                                                 <div className={styles.item}>
@@ -131,7 +129,7 @@ export default function ProfilePage() {
                                                 </div>
                                                 <hr className={`${styles.separation} ${styles.small}`} />
 
-                                                <div className={styles.item}>
+                                                <a href={found.website} target="blank" className={styles.item}>
                                                     <div className={styles.icon}>
                                                         <img src='/images/web-filled.png' alt="profile pic" />
                                                     </div>
@@ -141,20 +139,18 @@ export default function ProfilePage() {
                                                         </span>
                                                         <small>Página web</small>
                                                     </div>
-                                                </div>
-                                                <hr className={`${styles.separation} ${styles.small}`} />
+                                                </a>
                                             </div>
-
                                         </div>
                                     </div>
                                 </>
-                            ) : (
-                                <div></div>
                             )
                         }
                     </main>
                 ) : (
-                    <div>Nada</div>
+                    <div className={styles.loader}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="loading" />
+                    </div>
                 )
             }
         </div>

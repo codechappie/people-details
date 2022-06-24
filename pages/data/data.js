@@ -1,10 +1,10 @@
 export const data = [
     {
-        name: "Angel David",
-        lastname: "Canales Alcalde",
-        profile_image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=150&q=80",
-        profile_background: "https://c0.wallpaperflare.com/preview/194/171/797/color-abstract-background-crop.jpg",
-        occupation: "Developer",
+        name: "Andrea Carola",
+        lastname: "Giraldo Rosales",
+        profile_image: "https://img.freepik.com/foto-gratis/mujer-hermosa-joven-mirando-camara-chica-moda-camiseta-blanca-verano-casual-hembra-positiva-muestra-emociones-faciales-modelo-que-muestra-algo-ambas-manos-planas-eleccion-similar-producto_158538-15797.jpg?w=360",
+        profile_background: "https://img.freepik.com/free-photo/back-school-background-with-school-supplies-copy-space_23-2148958977.jpg?w=2000",
+        occupation: "Diseñadora",
         phone_number: "986859906",
         email: "contacto@arcadepapel.com",
         address_details: {
