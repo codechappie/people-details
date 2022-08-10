@@ -27,7 +27,7 @@ a {
   .trabajadores h1{
     margin-bottom: 40px;
   }
-  .trabajadores ul {
+  .trabajadores  .grid-t {
     list-style: none;
     display: flex;
     align-items: center;
@@ -36,7 +36,7 @@ a {
     flex-wrap: wrap;
   }
 
-  .trabajadores li{
+  .trabajadores .grid-t a{
     max-width: 280px;
     width: 100%;
     background: #fff;
