@@ -197,6 +197,7 @@
 }
 
 .map_modal .iframe {
+  max-width: 800px;
   display: flex;
   position: absolute;
   top: 50%;
@@ -225,6 +226,7 @@
   padding: 8px 24px;
   border-radius: 6px;
   margin-top: 20px;
+  width: fit-content;
 }
 .map_modal .close {
   position: absolute;
