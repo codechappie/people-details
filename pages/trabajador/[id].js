@@ -74,7 +74,7 @@ export default function ProfilePage() {
                                     <div className={styles.card_content}>
                                         <div className={styles.main_details}>
                                             <div className={styles.list_details}>
-                                                <a className={styles.item} href={`tel:${found.phone_number}`}>
+                                                <a className={styles.item} href={`https://api.whatsapp.com/send?phone=51${found.phone_number.replace(" ", "")}&text=Hola%20%F0%9F%98%80:`}>
                                                     <div className={styles.icon}>
                                                         <img src='/images/phone-filled.png' alt="profile pic" />
                                                     </div>
@@ -82,7 +82,7 @@ export default function ProfilePage() {
                                                         <span className={styles.main_text}>
                                                             {found.phone_number}
                                                         </span>
-                                                        <small>Móvil</small>
+                                                        <small>WhatsApp</small>
                                                     </div>
                                                 </a>
                                                 <hr className={`${styles.separation} ${styles.small}`} />
