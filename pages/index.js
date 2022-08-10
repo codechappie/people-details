@@ -12,9 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h2>Pruebas</h2>
-        {/* <ActivityIcon /> */}
-        <TestBellIcon width={150} height={150} />
+        <h2>Trabajadores <a href="https://arcadepapel.net">Arca de Papel</a></h2>
       </main>
 
     </div>
