@@ -8,12 +8,11 @@ export default function ProfilePage() {
     const { query } = useRouter();
     let id = query.id?.toLowerCase();
 
-    const found = data.filter(object => id === verifyID(object))[0]
+    const found = data.filter(object => id === object.username)[0]
     let tabTitle = "";
     if (found) {
         tabTitle = found?.name + " " + found?.lastname
     }
-
     return (
         <div className={styles.container}>
             <Head>
@@ -158,9 +157,9 @@ export default function ProfilePage() {
 }
 
 export const verifyID = ({ name, lastname }) => {
-    let first = lastname.split(" ")[0].split("").slice(0, 3).join("").toLowerCase()
-    let second = lastname.split(" ")[1].split("").slice(0, 3).join("").toLowerCase()
+    let first = lastname.split(" ")[0].split("").slice(0, 2).join("").toLowerCase()
+    let second = lastname.split(" ")[1].split("").slice(0, 2).join("").toLowerCase()
     let third = name.split(" ")[0].split("").slice(0, 2).join("").toLowerCase()
-    let fourth = name.split(" ")[1].split("").slice(0, 2).join("").toLowerCase()
+    let fourth = name.split(" ")[1] ? name.split(" ")[1].split("").slice(0, 2).join("").toLowerCase() : '';
     return first + second + third + fourth;
 }

@@ -15,3 +15,32 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Josefin Sans', sans-serif;}
+
+
+
+  .trabajadores {
+    padding: 30px;
+    text-align: center;
+    background: rgb(240, 240, 240);
+  }
+
+  .trabajadores h1{
+    margin-bottom: 40px;
+  }
+  .trabajadores ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .trabajadores li{
+    max-width: 280px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.086);
+    padding: 20px;
+    border-radius: 10px;
+  }
