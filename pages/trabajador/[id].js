@@ -29,15 +29,24 @@ export default function ProfilePage() {
                                 <div className={styles.close} onClick={() => setModalIsOpen(false)}>
                                     <img src="/images/close.png" alt="" />
                                 </div>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.9665589643755!2d-77.04023568561693!3d-12.114440646460457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c83eab9881b1%3A0xacd2d692acfa92c6!2sColegio%20Inmaculado%20Coraz%C3%B3n!5e0!3m2!1ses-419!2spe!4v1655955387487!5m2!1ses-419!2spe"
-                                    width="100%" height="400" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
-                                </iframe>
 
                                 <div className={styles.details}>
-                                    <h4>Ubicación</h4>
-                                    <p>{found.address_details.text}</p>
-
-                                    <a href={`https://www.google.com/maps/dir//${found.address_details.text}`} target="blank">¿Cómo llegar?</a>
+                                    <h3>{found.address_details.length > 1 ? 'Ubicaciones: ' : 'Ubicación: '}</h3>
+                                    <ul>
+                                        {
+                                            found.address_details.map((detail, ind) => (
+                                                <li key={ind}>
+                                                    <iframe src={`https://maps.google.com/maps?q=${detail.text}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                                                        width="100%" height="250" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+                                                    </iframe>
+                                                    <div className={styles.details}>
+                                                        <p>{detail.text}</p>
+                                                        <a href={`https://www.google.com/maps/dir//${detail.text}`} target="blank">¿Cómo llegar?</a>
+                                                    </div>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -118,11 +127,22 @@ export default function ProfilePage() {
                                                         <img src='/images/map-filled.png' alt="profile pic" />
                                                     </div>
                                                     <div className={styles.item_informartion}>
-                                                        <span className={styles.main_text}>
-                                                            {found.address_details.text}
-                                                        </span>
+                                                        <ul>
+                                                            {
+                                                                found.address_details.map((detail, ind) => (
+                                                                    <li key={ind}>
+                                                                        <span className={styles.main_text}>
+                                                                            {detail.text}
+                                                                        </span>
+                                                                        {/* <button className={styles.map_button} onClick={() => setModalIsOpen(true)}>
+                                                                            <img src="https://imgur.com/USY06YG.png" alt="img" />
+                                                                        </button> */}
+                                                                    </li>
+                                                                ))
+                                                            }
+                                                        </ul>
                                                         <button className={styles.map_button} onClick={() => setModalIsOpen(true)}>
-                                                            Mostrar en el mapa
+                                                            Ver mapas <img src="https://imgur.com/USY06YG.png" alt="img" />
                                                         </button>
                                                     </div>
                                                 </div>

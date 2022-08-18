@@ -2,9 +2,22 @@ import data from '../lib/data'
 
 const trabajadores = () => {
 
+    // const changeInSimpleText = (strs) => {
+    //     return strs.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    // }
+    // let newdata = data.map(el => {
+    //     return {
+    //         ...el,
+    //         username: changeInSimpleText(el.name).split(" ").join("-").toLowerCase() + "-" + changeInSimpleText(el.lastname).split(" ").join("-").toLowerCase(),
+    //         address_details: [
+    //             el.address_details
+    //         ]
+    //     }
+    // })
     return (
         <div className='trabajadores'>
             <h1>Trabajadores</h1>
+            {/* style={{ display: "none" }} */}
             <div className='grid-t'>
                 {
                     data.map(trabajador => (
@@ -16,6 +29,11 @@ const trabajadores = () => {
                     ))
                 }
             </div>
+
+            {/* for modify */}
+            {/* <pre>
+                {JSON.stringify(newdata, null, 2)}
+            </pre> */}
         </div>
     )
 }
