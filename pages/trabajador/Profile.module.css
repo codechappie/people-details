@@ -294,7 +294,42 @@
   background-color: #000000;
   cursor: pointer;
 }
-
+.catalog{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.catalog h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 20px 0 0 0;
+}
+.catalog iframe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  aspect-ratio: 16/9;
+  border-radius: 5px;
+}
+.catalog a{
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0073ff;
+  color: #ffffff;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
 @media screen and (max-width: 480px) {
   .main_background .main_content {
     padding: 20px 20px 10px 20px;

@@ -159,6 +159,12 @@ export default function ProfilePage() {
                                                         <small>Página web</small>
                                                     </div>
                                                 </a>
+                                                <hr className={`${styles.separation} ${styles.small}`} />
+                                                <div className={styles.catalog}>
+                                                    <h4>Catálogo</h4>
+                                                    <iframe width={100} src="https://catalogo.arcadepapel.net" border={0} frameBorder={0}></iframe>
+                                                    <a href='https://catalogo.arcadepapel.net' target="blank">Ver catálogo completo</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
